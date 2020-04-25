@@ -1,0 +1,147 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fancy Form</title>
+
+  <!-- You may add more stuff here -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- You may wrap the form in your own elements if necessary. -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 formContainer">
+        <h1>Enter the Amount to Send</h1>
+        <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+          <form onsubmit="return !1">
+            <div class="row indicators">
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 slide-indicator active" rel="0">
+                <div class="icon-position">
+                  <img class="slide-active" src="./assets/img/icons-active.png" alt="Active Icon">
+                  <img class="slide-inactive" src="./assets/img/icons-inactive.png" alt="Inactive Icon">
+                </div>
+                <p>Payment Details</p>
+              </div>
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 slide-indicator" rel="1">
+                <div class="icon-position">
+                  <img class="slide-active" src="./assets/img/icons-active.png" alt="Active Icon">
+                  <img class="slide-inactive" src="./assets/img/icons-inactive.png" alt="Inactive Icon">
+                </div>
+                <p>OTP</p>
+              </div>
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 slide-indicator" rel="2">
+                <div class="icon-position">
+                  <img class="slide-active" src="./assets/img/icons-active.png" alt="Active Icon">
+                  <img class="slide-inactive" src="./assets/img/icons-inactive.png" alt="Inactive Icon">
+                </div>
+                <p>Complete</p>
+              </div>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="form-field col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">                
+                    <label for="input-address">Bitcoin Address</label>
+                    <br>
+                    <input type="text" id="input-address" placeholder="16q4PinynazaMYfv24juNLkbjkDQxJo2dc" />
+                    <div class="err-input-addr">
+                      Invalid Bitcoin Address! Please enter a valid Bitcoin Address.
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-field col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                    <label for="input-amount">Amount to send</label>
+                    <br>
+                    <input type="text" id="input-amount" placeholder="5000.00" />
+                    <div class="err-input-amt">
+                      Invalid Input Amount. Please enter a number.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <img class="phone" src="./assets/img/phone.png" alt="Image of a phone">
+                </div>
+                <div class="row">
+                  <div class="col-10 col-md-10 col-sm-10 col-lg-10 col-xl-10 otp-panel form-field">
+                    <label for="input-otp">OTP Authentication</label>
+                    <br>
+                    <input type="number" id="input-otp" placeholder="SMS OTP" />
+                    <button id="send-btc">SEND BTC</button>
+                    <div class="err-input-otp">
+                      Invalid OTP. Please try again.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <img class="loading" src="./assets/img/loading-02.gif" alt="Loading Image">
+                </div>
+                <h4 class="loading">Loading...</h4>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <img class="complete" src="./assets/img/complete.png" alt="Tick Image">
+                </div>
+                <h3 class="complete">Transfer Successful!</h3>
+                <p class="confirmation-msg">You have sent $<span class="amount"></span> to Account No. <span class="account-no"></span></p>
+              </div>
+            </div>
+            <div class="row buttons">
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <button type="button" class="slideBtn" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span>PREVIOUS</span>
+                </button>
+              </div>
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+              </div>
+              <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                <button type="button" class="slideBtn" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span>NEXT</span>
+                </button>
+                <button type="button" class="submitBtn" href="#carouselExampleIndicators" role="button">
+                  <span>SUBMIT</span>
+                </button>
+              </div>
+            </div>
+            <div class="row reset">
+              <button type="button" class="resetBtn" href="#carouselExampleIndicators" role="button" data-slide-to="0">
+                <span>MAKE ANOTHER TRANSFER</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <form onsubmit="return !1">
+    <div class="slider-slide" rel="1">
+      <h1>Enter Amount to Send</h1>
+      <label for="input-address">Bitcoin Address</label>
+      <input id="input-address" placeholder="16q4PinynazaMYfv24juNLkbjkDQxJo2dc" />
+
+      <label for="input-amount">Amount to send</label>
+      <input id="input-amount" placeholder="0.0000" />
+    </div>
+
+    <div class="slider-slide" rel="2">
+      <label for="input-otp">OTP Authentication</label>
+      <input type="number" id="input-otp" placeholder="SMS OTP" />
+    </div>
+
+    <button>SEND BTC</button>
+  </form> -->
+  <script src="./script.js"></script>
+</body>
+
+</html>
